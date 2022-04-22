@@ -1,0 +1,32 @@
+// Padding
+$padding-default: 20px;
+$padding-small: 16px;
+
+// Screen breakpoints
+$breakpoint-small: 640px; // 639px and below
+$breakpoint-medium: 1024px; // 640px - 1023px
+$breakpoint-medium-tablet: $breakpoint-medium - 1px;
+
+// Screen boundaries
+$screen-width-min: 320px;
+$screen-width-max: 1440px;
+
+// Fonts
+$font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
+$font-size-xsmall: 1.2rem;
+$font-size-small: 1.3rem;
+$font-size: 1.4rem;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+$line-height: 16px;
+
+// Borders
+$border-radius: 3px;
+
+// Transition variables
+$transition-duration: 0.3s;
+$transition-timing-function: ease-out;
+
+// Layout variables
+$header-height: 48px;

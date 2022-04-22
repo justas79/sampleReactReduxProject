@@ -1,0 +1,101 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font: {
+        family: $font-family;
+        size: $font-size;
+    }
+
+    outline: 0;
+}
+
+.layout {
+    min-width: 1280px;
+
+    &__header-container {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+}
+
+#root {
+    position: relative;
+}
+
+@mixin headings($font-size, $font-weight, $line-height: 1.5, $margin) {
+    color: $color-heading;
+    line-height: $line-height;
+    margin: $margin;
+    font: {
+        size: $font-size;
+        weight: $font-weight;
+    }
+}
+
+// Typography
+h1,
+.heading1 {
+    @include headings($font-size: 24px, $font-weight: $fw-medium, $margin: 0 0 24px 0);
+}
+
+h2,
+.heading2 {
+    @include headings($font-size: 20px, $font-weight: $fw-medium, $margin: 0 0 20px 0);
+}
+
+h3,
+.heading3 {
+    @include headings($font-size: 18px, $font-weight: $fw-medium, $margin: 0 0 18px 0);
+}
+
+h4,
+.heading4 {
+    @include headings($font-size: 16px, $font-weight: $fw-bold, $margin: 0 0 16px 0);
+}
+
+h5,
+.heading5 {
+    @include headings($font-size: 14px, $font-weight: $fw-bold, $margin: 0 0 14px 0);
+}
+
+h6,
+.heading6 {
+    @include headings($font-size: 12px, $font-weight: $fw-bold, $margin: 0 0 8px 0);
+}
+
+a {
+    color: $color-blue-400;
+    cursor: pointer;
+    font-weight: $fw-medium;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+a,
+button,
+svg {
+    &:focus,
+    &:focus-visible {
+        outline: 0;
+    }
+}
+
+p {
+    margin: 0 0 8px;
+}
+
+strong,
+b {
+    font-weight: $fw-bold;
+}
+
+em,
+i {
+    font-style: italic;
+}

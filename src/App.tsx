@@ -4,9 +4,6 @@ import {store} from "./state/store";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import TransactionListContainer from "./componenents/TransactionListContainer";
 
-
-import './App.css';
-
 function App() {
   return (
 

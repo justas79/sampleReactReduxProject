@@ -1,0 +1,72 @@
+// sass-lint:disable-all
+// Print
+// Inlined to avoid required HTTP connection: h5bp.com/r
+@media print {
+    * {
+        //stylelint-disable declaration-no-important
+        background: transparent !important;
+        box-shadow: none !important;
+        color: $color-black !important; // Black prints faster: h5bp.com/s
+        text-shadow: none !important;
+        //stylelint-enable declaration-no-important
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    .print-show-href[href]::after {
+        content: ' (' attr(href) ')';
+        font-size: 80%;
+    }
+
+    .print-show-title[title]::after {
+        content: ' (' attr(title) ')';
+        font-size: 80%;
+    }
+
+    // * Don't show links for images, or javascript/internal links
+
+    .ir a::after,
+    a[href^='javascript:']::after,
+    a[href^='#']::after {
+        content: '';
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid $color-gray-500;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; // h5bp.com/t
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        //stylelint-disable-next-line declaration-no-important
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

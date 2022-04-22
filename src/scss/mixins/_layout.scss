@@ -1,0 +1,48 @@
+@mixin respond-to($media, $type: max) {
+    @if $media == small {
+        @media only screen and (max-width: $breakpoint-small - 1px) {
+            @content;
+        }
+    } @else if $media == medium {
+        @media only screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium - 1px) {
+            @content;
+        }
+    } @else if $media == large {
+        @media only screen and (min-width: $breakpoint-medium) {
+            @content;
+        }
+    } @else {
+        @media only screen and (#{$type}-width: $media) {
+            @content;
+        }
+    }
+}
+
+// Positioning mixin that is based on absolute positioned elements transform
+@mixin positioning($center: null, $center-y: null, $center-x: null) {
+    position: absolute;
+
+    @if $center {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @if $center-y {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @if $center-x {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    bottom: $bottom;
+    left: $left;
+    position: $position;
+    right: $right;
+    top: $top;
+}

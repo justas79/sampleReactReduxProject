@@ -1,0 +1,212 @@
+// A list of helper mixins
+
+// A mixin for vertically aligning items, using inline-block or table-cell behaviour
+// @param $block {string} sets display type (inline-block or table-cell accepted)
+// @param $align {string} is a vertical align property
+@mixin vertical-align($block: inline-block, $align: middle) {
+    display: $block;
+    vertical-align: $align;
+}
+
+// Generates fade effect to the right, when content doesn't fit the container
+// Best, when used as pseudo element (::before or ::after)
+// @param $color {string} is a color that this will FADE INTO.
+// @param $width {number} is a width of fade area (any value).
+// @param $only-color-change {bool} escapes all other parameters when you only need to change background of existing element.
+@mixin fade-truncation($color: $color-white, $width: 24px, $only-color-change: false) {
+    @if (not($only-color-change)) {
+        background: transparent linear-gradient(to right, rgba($color, 0), $color 85%) repeat scroll 0 0;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: $width;
+    } @else {
+        background: transparent
+            linear-gradient(to right, rgba($only-color-change, 0), $only-color-change 85%)
+            repeat
+            scroll
+            0
+            0;
+    }
+}
+
+//Used for clearing parent with floating elements
+@mixin clearfix {
+    &::after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+}
+
+@mixin overflowShadows {
+    /* Do not use background shortening as IDE might suggest, it breaks the construct. */
+    background: linear-gradient(to bottom, $color-white, $color-white),
+        linear-gradient(to top, $color-white, $color-white), linear-gradient(to bottom, $color-gray-400, transparent),
+        linear-gradient(to top, $color-gray-400, transparent);
+    background-attachment: local, local, scroll, scroll;
+    background-position: top center, bottom center, top center, right bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 40px, 100% 40px, 100% 4px, 100% 4px;
+}
+
+@mixin multiline-text-truncation(
+    $font-size: $font-size-default,
+    $line-height: $line-height-default,
+    $lines: 3,
+    $background-color: $color-white
+) {
+    // At first, line-height should be formatted, because it can be unitless, or units may differ
+    $line-height-formatted: $line-height;
+
+    @if unit($line-height) == 'em' {
+        $line-height-formatted: $line-height / 1em;
+    } @else if unit($line-height) == 'px' {
+        $line-height-formatted: $line-height / $font-size;
+    }
+
+    // Helper variables
+    $full-block-height: $font-size * $line-height-formatted * $lines;
+
+    font-size: $font-size;
+    line-height: $line-height-formatted;
+    max-height: $full-block-height;
+    overflow: hidden;
+    position: relative;
+
+    //stylelint-disable
+    @supports (-webkit-line-clamp: $lines) {
+        // Remove important rule after post-css mutation will be removed
+        display: -webkit-box !important;
+        -webkit-line-clamp: $lines;
+
+        &::after {
+            display: none;
+        }
+    }
+    //stylelint-enable
+}
+
+@mixin dropdown-icon {
+    border: solid $color-blue-500;
+    border-width: 0 2px 2px 0;
+    content: '';
+    display: inline-block;
+    height: 7px;
+    transform: rotate(45deg);
+    width: 7px;
+}
+
+// @param $width {number} lets to set custom max-width (any width value)
+// @param $display {string} is a display property value
+// @param $white-space {string} is a white-space property value (in rare cases you might not need nowrap)
+@mixin ellipsis($width: 100%, $display: inline-block, $white-space: nowrap) {
+    display: $display;
+    max-width: $width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: $white-space;
+    word-wrap: normal;
+}
+
+// Resets default styling for buttons
+// @param $clean {bool} fully resets all default properties of the button. If you want to prevent double declarations (like generating border twice), set it to false.
+@mixin reset-button-style($clean: true) {
+    appearance: none;
+    cursor: pointer;
+
+    @if ($clean) {
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+//Remove arrows of number input
+@mixin remove-number-input-arrows {
+    //stylelint-disable
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        //Chrome, Safari, Edge, Opera
+        margin: 0;
+        -webkit-appearance: none;
+    }
+
+    //Firefox
+    -moz-appearance: textfield;
+    //stylelint-enable
+}
+
+// Sticky element
+@mixin sticky($top: 0, $bottom: null, $fallback: initial) {
+    //stylelint-disable
+    bottom: $bottom;
+    position: $fallback;
+    position: -webkit-sticky;
+    position: sticky;
+    top: $top;
+    //stylelint-enable
+}
+
+//Default focusable element outline
+@mixin focus-outline($offset: 1px) {
+    outline: 1px dotted $color-focus;
+    outline-offset: $offset;
+}
+
+// Mixin to target only Internet Explorer 9
+@mixin applyStylesOnlyForIE9 {
+    /* stylelint-disable */
+    @media screen and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+        @content;
+    }
+    /* stylelint-enable */
+}
+
+// Mixin to target Internet Explorer browsers 9+
+@mixin applyStylesForIE9AndUp {
+    /* stylelint-disable */
+    @media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
+        @content;
+    }
+    /* stylelint-enable */
+}
+
+// Mixin to target Internet explorer browsers 10+
+@mixin applyStylesForIE10AndUp {
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+//Design team asked to unify drop shadow effect
+@mixin drop-shadow {
+    box-shadow: 0 4px 2px -2px $color-gray-500;
+}
+
+// Reset UL (list) default browser styles
+@mixin reset-list-styles($margin: 0, $padding: 0) {
+    list-style: none;
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin size($width, $height: $width) {
+    @if _is-size($height) {
+        height: $height;
+    } @else {
+        @error '`#{$height}` is not a valid length for the `$height` argument ' +
+            'in the `size` mixin.';
+    }
+
+    @if _is-size($width) {
+        width: $width;
+    } @else {
+        @error '`#{$width}` is not a valid length for the `$width` argument ' +
+            'in the `size` mixin.';
+    }
+}

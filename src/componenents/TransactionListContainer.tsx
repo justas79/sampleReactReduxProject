@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import { DateRangePicker } from 'rsuite';
 import 'rsuite/dist/rsuite.css';
 import {RootState} from "../state/store";
+import FileUpload from './FileUpload/FileUpload';
 
 const TransactionListContainer: React.FC = () => {
 
@@ -15,7 +16,7 @@ const TransactionListContainer: React.FC = () => {
 	const [rangeFrom, setRangeFrom] = useState();
 	const [rangeTo, setRangeTo] = useState();
 
-	const useRange = (range:any) => {
+	const range = (range:any) => {
 		console.log('clicked');
 		console.log('clicked ', range[0]);
 		setRangeFrom(range[0].toISOString());
@@ -43,18 +44,16 @@ const TransactionListContainer: React.FC = () => {
 				</TabList>
 
 				<TabPanel>
-					<h2>
 
 
-	upload here
+<FileUpload/>
 
 
-					</h2>
 				</TabPanel>
 				<TabPanel>
 					<div>
 						{/*<DatePicker selected={startDate} onChange={(date) => () => {}} />*/}
-						<DateRangePicker onOk={(e => useRange(e))} />
+						<DateRangePicker onOk={(e => range(e))} />
 						<label>Customer</label>
 
 						{/*<div>{range && range[0].getDate }</div>*/}

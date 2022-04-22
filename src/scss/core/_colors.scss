@@ -1,0 +1,58 @@
+$color-white: #fff;
+$color-black: #000;
+
+$color-shadow-8: #00000014;
+$color-shadow-16: #00000029;
+
+$color-gray-000: #fafafa;
+$color-gray-050: #f1f3f5;
+$color-gray-100: #e4e8eb;
+$color-gray-200: #bdc5c9;
+$color-gray-300: #9ba8b0;
+$color-gray-400: #728087;
+$color-gray-500: #475054;
+$color-gray-600: #1b2126;
+
+$color-blue-000: #f1f9ff;
+$color-blue-100: #dbefff;
+$color-blue-200: #a5d4fa;
+$color-blue-300: #5ea8e0;
+$color-blue-400: #1979c8;
+$color-blue-500: #105287;
+$color-blue-600: #0b3557;
+
+$color-red-100: #fbebee;
+$color-red-200: #f2c9d0;
+$color-red-300: #d8596e;
+$color-red-400: #c40021;
+$color-red-500: #940a21;
+
+$color-green-300: #00b380;
+$color-green-400: #004d37;
+$color-green-500: #003626;
+
+$color-yellow-000: #fffcf4;
+$color-yellow-100: #fff8e4;
+$color-yellow-200: #fff6ce;
+$color-yellow-400: #fac00c;
+$color-yellow-500: #f59a23;
+
+$color-orange-100: #fff6eb;
+$color-orange-300: #ffad4f;
+$color-orange-400: #fd8700;
+
+$color-brand-grey: #72777d;
+$color-brand-slate: #29333b;
+
+// Helper colors
+$color-text-primary: $color-black;
+$color-text-secondary: $color-gray-500;
+$color-border-primary: $color-gray-500;
+$color-border-secondary: $color-blue-500;
+$color-focus: $color-blue-400; // used for element focus states
+
+$color-heading: $color-gray-600;
+
+$color-error: $color-red-400;
+$color-warning: $color-yellow-500;
+$color-info: $color-blue-400;
