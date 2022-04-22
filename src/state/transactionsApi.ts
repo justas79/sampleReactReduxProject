@@ -3,7 +3,10 @@ import {TransactionsResponse} from "./TransactionsResponse";
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 
 export const getHttpTransactions = (
-	statementId: string
+	statementId: string,
+	rangeFrom: string,
+	rangeTo: string,
+	company: string
 ): Promise<AxiosResponse<TransactionsResponse>> => {
 	return filesApi.get(`listTransactions/${statementId}`);
 };

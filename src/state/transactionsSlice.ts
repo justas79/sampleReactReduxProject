@@ -10,7 +10,7 @@ export const transactionsSlice = createSlice({
 	initialState,
 	reducers: {
 		startTransactions: (state: any, action: PayloadAction<any>) => {
-			console.log('calling from reducer startTransaction');
+			console.log('calling from reducer startTransaction', action);
 
 			state.loading = true;
 		},

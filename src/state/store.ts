@@ -14,5 +14,6 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(sagas);
+export type RootState = ReturnType<typeof store.getState>;
 
 
